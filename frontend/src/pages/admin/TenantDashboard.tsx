@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -8,7 +8,6 @@ import {
   Shield,
   Zap,
   TrendingUp,
-  Dumbbell,
   Star,
   CheckCircle,
   XCircle,
@@ -51,7 +50,7 @@ export default function TenantDashboard() {
     enabled: isAdmin,
   });
 
-  const { data: statsData } = useQuery({
+  useQuery({
     queryKey: ['tenant', 'stats'],
     queryFn: () => tenantService.getStats(),
     enabled: isAdmin,

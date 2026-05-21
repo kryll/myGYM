@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bluetooth, BluetoothOff, BluetoothConnected, Scale, Zap, AlertCircle, Check } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -20,7 +20,6 @@ export function BluetoothScanner({ onData, onSave, className }: BluetoothScanner
 
   const {
     isConnected,
-    isBluetoothSupported,
     isScanning,
     isConnecting,
     isSaving,

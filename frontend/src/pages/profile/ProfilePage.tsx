@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { User, Mail, Phone, Calendar, Scale, Dumbbell, Cpu, Edit3, Save, X } from 'lucide-react';
+import { User, Calendar, Scale, Dumbbell, Cpu, Edit3, Save, X } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
 import { Card } from '@/components/UI/Card';
 import { Badge } from '@/components/UI/Badge';
 import { useAuth } from '@/hooks/useAuth';
 import { useBodyMeasurements } from '@/hooks/useBodyMeasurements';
 import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
 
 export default function ProfilePage() {
   const navigate = useNavigate();

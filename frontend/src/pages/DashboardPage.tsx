@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
@@ -13,10 +12,9 @@ import {
   Scale,
   TrendingUp,
   TrendingDown,
-  Zap,
   Calendar,
 } from 'lucide-react';
-import { Card, CardHeader, CardTitle } from '@/components/UI/Card';
+import { Card, CardTitle } from '@/components/UI/Card';
 import { Button } from '@/components/UI/Button';
 import { ProgressBar } from '@/components/UI/ProgressBar';
 import { Badge } from '@/components/UI/Badge';

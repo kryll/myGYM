@@ -13,7 +13,6 @@ const WEIGHT_MEASUREMENT = '00002a9d-0000-1000-8000-00805f9b34fb'; // Weight Mea
 
 // Alternative UUIDs for Mi Scale 2
 const MI_SCALE_SERVICE_2 = '0000181b-0000-1000-8000-00805f9b34fb';
-const MI_SCALE_CHAR_2 = '00002a9c-0000-1000-8000-00805f9b34fb';
 
 export type BluetoothEventCallback = (event: BluetoothEvent) => void;
 
@@ -42,7 +41,6 @@ class BluetoothService {
   private server: BluetoothRemoteGATTServer | null = null;
   private characteristic: BluetoothRemoteGATTCharacteristic | null = null;
   private listeners: Set<BluetoothEventCallback> = new Set();
-  private isScanning = false;
   private userParams: UserMeasurementParams | null = null;
 
   // --------------------------------------------------------
@@ -87,7 +85,6 @@ class BluetoothService {
       throw new Error('Web Bluetooth no está soportado en este navegador');
     }
 
-    this.isScanning = true;
     this.emit({ type: 'scanning' });
 
     try {
@@ -125,7 +122,6 @@ class BluetoothService {
 
       return deviceInfo;
     } catch (error) {
-      this.isScanning = false;
       const message = error instanceof Error ? error.message : 'Error al escanear';
       if (message.includes('User cancelled')) {
         throw new Error('Búsqueda cancelada por el usuario');
@@ -220,7 +216,7 @@ class BluetoothService {
   // --------------------------------------------------------
 
   private handleMeasurementData(event: Event): void {
-    const target = event.target as BluetoothRemoteGATTCharacteristic;
+    const target = event.target as unknown as BluetoothRemoteGATTCharacteristic;
     const value = target.value;
 
     if (!value) return;

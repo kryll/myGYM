@@ -90,7 +90,7 @@ export function useDevice(options: UseDeviceOptions = {}) {
           if (event.data) {
             const deviceId = connectedDevices.find((d) => d.type === 'xiaomi_scale')?.id;
             if (deviceId) {
-              updateLastData(deviceId, event.data as Record<string, unknown>);
+              updateLastData(deviceId, event.data as unknown as Record<string, unknown>);
             }
             callbacksRef.current.onData?.(event.data);
           }
@@ -176,7 +176,7 @@ export function useDevice(options: UseDeviceOptions = {}) {
     await connectMutation.mutateAsync();
     const device = bluetoothService.getConnectedDevice();
     if (device) {
-      await registerDeviceMutation.mutateAsync(device);
+      await registerDeviceMutation.mutateAsync({ id: device.id, name: device.name, type: device.deviceType });
     }
   }, [connectMutation, registerDeviceMutation]);
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SkipForward, Plus } from 'lucide-react';
 import { CircularProgress } from '@/components/UI/ProgressBar';

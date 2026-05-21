@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -9,12 +9,8 @@ import {
   Check,
   X,
   Dumbbell,
-  ChevronDown,
-  ChevronUp,
-  Plus,
 } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { Card } from '@/components/UI/Card';
 import { SetLogger } from '@/components/Workout/SetLogger';
 import { RestTimer } from '@/components/Workout/RestTimer';
 import { ProgressBar } from '@/components/UI/ProgressBar';
@@ -25,7 +21,6 @@ import { useState } from 'react';
 export default function ActiveWorkoutPage() {
   const navigate = useNavigate();
   const [showEndModal, setShowEndModal] = useState(false);
-  const [expandedExercise, setExpandedExercise] = useState<string | null>(null);
 
   const {
     activeSession,

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Plus, Scale, TrendingDown, TrendingUp, Bluetooth, Activity } from 'lucide-react';
+import { Plus, Scale, TrendingDown, TrendingUp, Bluetooth } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
 import { Card, CardTitle } from '@/components/UI/Card';
 import { Badge } from '@/components/UI/Badge';

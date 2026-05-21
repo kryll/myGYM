@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   ArrowLeft,
@@ -8,12 +7,10 @@ import {
   Clock,
   Calendar,
   Users,
-  Star,
   ChevronDown,
   ChevronRight,
   Dumbbell,
   AlertCircle,
-  CheckCircle,
 } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
 import { Badge, DifficultyBadge, EnvironmentBadge } from '@/components/UI/Badge';
@@ -21,7 +18,6 @@ import { Card } from '@/components/UI/Card';
 import { ProgressBar } from '@/components/UI/ProgressBar';
 import { PageLoader } from '@/components/UI/LoadingSpinner';
 import { planService } from '@/services/api';
-import { ExerciseCard } from '@/components/Workout/ExerciseCard';
 
 const dayNames = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
 const goalLabels: Record<string, string> = {

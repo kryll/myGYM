@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Target, Plus, Check, Calendar, TrendingUp, Trophy, Trash2 } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { Card } from '@/components/UI/Card';
 import { Modal } from '@/components/UI/Modal';
 import { ProgressBar, CircularProgress } from '@/components/UI/ProgressBar';
 import { PageLoader } from '@/components/UI/LoadingSpinner';

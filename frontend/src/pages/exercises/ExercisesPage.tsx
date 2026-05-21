@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
@@ -65,7 +65,7 @@ function FilterChip({
 }
 
 export default function ExercisesPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') ?? '');
   const [selectedMuscle, setSelectedMuscle] = useState<MuscleGroup | ''>('');
   const [selectedEquipment, setSelectedEquipment] = useState<Equipment | ''>('');

@@ -1,9 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Trophy, Flame, Clock, Users, Target, Award } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
-import { Card } from '@/components/UI/Card';
 import { Badge } from '@/components/UI/Badge';
 import { ProgressBar } from '@/components/UI/ProgressBar';
 import { PageLoader } from '@/components/UI/LoadingSpinner';

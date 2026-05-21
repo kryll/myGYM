@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { ClipboardList, Search, Home, Building2, Star, Users, Clock } from 'lucide-react';
-import { Card } from '@/components/UI/Card';
 import { Button } from '@/components/UI/Button';
 import { Badge, DifficultyBadge, EnvironmentBadge } from '@/components/UI/Badge';
 import { ProgressBar } from '@/components/UI/ProgressBar';
@@ -116,8 +115,8 @@ function PlanCard({ plan }: { plan: TrainingPlan }) {
 export default function TrainingPlansPage() {
   const [search, setSearch] = useState('');
   const [envFilter, setEnvFilter] = useState<PlanEnvironment | ''>('');
-  const [diffFilter, setDiffFilter] = useState<PlanDifficulty | ''>('');
-  const [goalFilter, setGoalFilter] = useState<PlanGoal | ''>('');
+  const [diffFilter] = useState<PlanDifficulty | ''>('');
+  const [goalFilter] = useState<PlanGoal | ''>('');
 
   const filters = {
     search: search || undefined,

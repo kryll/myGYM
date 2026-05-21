@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Bluetooth, BluetoothConnected, BluetoothOff, Watch, Scale, Trash2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, BluetoothOff, Watch, Scale, Trash2 } from 'lucide-react';
 import { Button } from '@/components/UI/Button';
 import { Card } from '@/components/UI/Card';
 import { Badge } from '@/components/UI/Badge';
 import { BluetoothScanner } from '@/components/Devices/BluetoothScanner';
 import { useDevice } from '@/hooks/useDevice';
+import { useDeviceStore } from '@/store/deviceStore';
 import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
 
 const deviceIcons: Record<string, React.ElementType> = {
   xiaomi_scale: Scale,
@@ -26,7 +26,8 @@ const deviceNames: Record<string, string> = {
 
 export default function DevicesPage() {
   const navigate = useNavigate();
-  const { devices, isConnected, connectToScale, disconnect, isConnecting, isBluetoothSupported, removeDevice } = useDevice();
+  const { devices, isBluetoothSupported } = useDevice();
+  const { removeDevice } = useDeviceStore();
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">

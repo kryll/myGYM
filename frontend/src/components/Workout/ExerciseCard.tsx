@@ -1,8 +1,6 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Play, Dumbbell, Clock, ChevronRight } from 'lucide-react';
-import { clsx } from 'clsx';
 import { DifficultyBadge, Badge } from '@/components/UI/Badge';
 import type { Exercise } from '@/types';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Bot, User } from 'lucide-react';
 import { clsx } from 'clsx';

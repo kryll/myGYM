@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Minus, Check, Timer } from 'lucide-react';
 import { clsx } from 'clsx';
