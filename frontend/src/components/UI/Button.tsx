@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import { clsx } from 'clsx';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success' | 'outline';
@@ -70,7 +70,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className,
         )}
         disabled={isDisabled}
-        {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        onClick={props.onClick as HTMLMotionProps<'button'>['onClick']}
+        onSubmit={props.onSubmit as HTMLMotionProps<'button'>['onSubmit']}
+        type={props.type}
+        id={props.id}
+        name={props.name}
+        form={props.form}
+        aria-label={props['aria-label']}
+        aria-describedby={props['aria-describedby']}
+        title={props.title}
+        tabIndex={props.tabIndex}
+        style={props.style}
       >
         {isLoading ? (
           <svg
