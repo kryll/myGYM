@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mygym_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_DATABASE:-mygym}
+      MYSQL_USER: ${DB_USERNAME:-mygym_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-mygym_password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mygym_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: mygym_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - mygym_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mygym_backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/var/www/html
+      - /var/www/html/vendor
+    environment:
+      - APP_ENV=local
+      - APP_KEY=${APP_KEY}
+      - DB_HOST=mysql
+      - DB_DATABASE=${DB_DATABASE:-mygym}
+      - DB_USERNAME=${DB_USERNAME:-mygym_user}
+      - DB_PASSWORD=${DB_PASSWORD:-mygym_password}
+      - REDIS_HOST=redis
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+    networks:
+      - mygym_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: mygym_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+      - VITE_WS_URL=ws://localhost:8000
+    networks:
+      - mygym_network
+
+networks:
+  mygym_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-bg text-white antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-electric-500 hover:bg-electric-400 text-dark-bg font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-electric hover:shadow-electric-lg active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-elevated hover:bg-dark-hover border border-dark-border text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-neon {
+    @apply bg-neon-500 hover:bg-neon-400 text-dark-bg font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-neon hover:shadow-neon-lg active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-dark-elevated text-gray-400 hover:text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-danger {
+    @apply bg-danger/20 hover:bg-danger/30 text-danger border border-danger/30 font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-2xl shadow-card;
+  }
+
+  .card-hover {
+    @apply card hover:border-electric-500/30 hover:shadow-card-hover transition-all duration-300 cursor-pointer;
+  }
+
+  .card-glow {
+    @apply card border-electric-500/20 shadow-electric;
+  }
+
+  .input-field {
+    @apply w-full bg-dark-elevated border border-dark-border rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-electric-500 focus:ring-1 focus:ring-electric-500/50 transition-all duration-200;
+  }
+
+  .label-field {
+    @apply text-sm font-medium text-gray-400 mb-1 block;
+  }
+
+  .badge-electric {
+    @apply inline-flex items-center gap-1 bg-electric-500/15 text-electric-400 border border-electric-500/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-neon {
+    @apply inline-flex items-center gap-1 bg-neon-500/15 text-neon-400 border border-neon-500/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 bg-warning/15 text-warning border border-warning/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 bg-danger/15 text-danger border border-danger/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-electric-500 to-neon-500 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-blue {
+    @apply bg-gradient-to-r from-electric-400 to-electric-600 bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold text-white;
+  }
+
+  .section-subtitle {
+    @apply text-gray-400 mt-1;
+  }
+
+  .stat-card {
+    @apply card p-6 flex flex-col gap-3;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-dark-elevated transition-all duration-200 font-medium;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link text-electric-400 bg-electric-500/10 border border-electric-500/20 hover:bg-electric-500/15;
+  }
+
+  .page-container {
+    @apply p-6 max-w-7xl mx-auto;
+  }
+
+  .page-header {
+    @apply mb-8;
+  }
+
+  .divider {
+    @apply border-t border-dark-border;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-dark-bg/80 backdrop-blur-xl border border-dark-border;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-dark-elevated rounded-full overflow-hidden;
+  }
+
+  .progress-fill-electric {
+    @apply h-full bg-gradient-to-r from-electric-600 to-electric-400 rounded-full transition-all duration-500;
+  }
+
+  .progress-fill-neon {
+    @apply h-full bg-gradient-to-r from-neon-600 to-neon-400 rounded-full transition-all duration-500;
+  }
+
+  .progress-fill-warning {
+    @apply h-full bg-gradient-to-r from-yellow-600 to-warning rounded-full transition-all duration-500;
+  }
+
+  /* Scrollbar for specific containers */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dark-muted rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-electric-500;
+  }
+
+  /* Number inputs */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  .text-shadow-neon {
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .animate-in {
+    animation: slideUp 0.3s ease-out;
+  }
+}
+
+/* Custom range input */
+input[type='range'] {
+  @apply appearance-none bg-dark-elevated rounded-full h-2 cursor-pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-electric-500 rounded-full border-2 border-dark-bg shadow-electric;
+}
+input[type='range']::-moz-range-thumb {
+  @apply w-4 h-4 bg-electric-500 rounded-full border-2 border-dark-bg shadow-electric;
+  border: none;
+}
+
+/* Recharts overrides */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #12121A !important;
+  border: 1px solid #2A2A3E !important;
+  border-radius: 12px !important;
+  color: white !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #2A2A3E !important;
+}
+
+.recharts-text {
+  fill: #9CA3AF !important;
+}
+
+/* Framer motion defaults */
+.motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    will-change: transform;
+  }
+}
